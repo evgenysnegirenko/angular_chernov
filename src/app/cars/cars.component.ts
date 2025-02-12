@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { isNgTemplate } from '@angular/compiler';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -9,7 +10,7 @@ import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
   styleUrl: './cars.component.css'
 })
 export class CarsComponent {
-
+  http = inject(HttpClient)
   cars:any = [];
   baseCars =  [
     {
@@ -156,8 +157,18 @@ export class CarsComponent {
 
   sendOrder() {
     if (this.orderForm.valid) {
-      alert("Спасибо за заявку! Мы скоро свяжемся с Вами");
-      this.orderForm.reset();
+      this.http.post("https://testologia.ru/cars-order", this.orderForm.value)
+      .subscribe(
+        {
+          next: (response: any) => {
+            alert(response.message);
+            this.orderForm.reset();
+          },
+          error: (response: any) => {
+            alert(response.error.message);
+          }
+        }
+      )      
     }
   }
   
