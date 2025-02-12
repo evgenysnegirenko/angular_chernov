@@ -60,7 +60,7 @@
   }
   
   .main-info {
-    min-width: 755px;
+    max-width: 755px;
   }
   
   h1 {
@@ -94,8 +94,14 @@
     cursor: pointer;
   }
   
-  .button:hover {
+  .button:hover:not(:disabled) {
     background: #ffffff;
+  }
+
+  .button:disabled {
+    cursor: not-allowed;
+    color: grey;
+    background-color: #343434;
   }
   
   .button.button-white {
@@ -303,13 +309,13 @@
     outline: none;
   }
   
-  .input-error {
+  .order input.error {
     border: 1px solid red;
   }
   
-  .input-valid {
+  /* .input-valid {
     border: 1px solid white;
-  }
+  } */
   
   .footer {
     padding: 47px 0;
