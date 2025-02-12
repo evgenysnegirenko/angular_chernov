@@ -303,13 +303,13 @@
     outline: none;
   }
   
-  .input-error {
+  .order input.error {
     border: 1px solid red;
   }
   
-  .input-valid {
+  /* .input-valid {
     border: 1px solid white;
-  }
+  } */
   
   .footer {
     padding: 47px 0;
