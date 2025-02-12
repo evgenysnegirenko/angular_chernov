@@ -61,7 +61,7 @@
                       </li>
                     }
                   </ul>
-                  <a href="#order" class="button button-white">Забронировать</a>
+                  <a href="#order" class="button button-white" (click)="this.orderForm.get('car')?.setValue(car.title)">Забронировать</a>
                 </div>
               </div>
             </article>
@@ -75,15 +75,15 @@
   <section class="order" id="order">
     <div class="container">
       <img src="images/order-car.png" alt="order car">
-      <form [formGrup]="orderForm">
+      <form [formGroup]="orderForm">
         <h3>Забронируйте автомобиль</h3>
         <p>
           Заполните контактные данные, и мы перезвоним вам для обсуждения деталей и подтверждения бронирования
         </p>
-        <input type="text" placeholder="Автомобиль" required id="car" formControlName="car" [class.error]="isError('car')">
-        <input type="text" placeholder="Ваше имя" required id="name" formControlName="name" [class.error]="isError('name')">
-        <input type="text" placeholder="Ваш телефон" required id="phone" minlength="10" formControlName="phone" [class.error]="isError('phone')">
-        <button type="button" class="button" id="order-action">Забронировать</button>
+        <input type="text" placeholder="Автомобиль" required readonly id="car" formControlName="car" [class.error]="isError('car')">
+        <input type="text" placeholder="Ваше имя" required  id="name" formControlName="name" [class.error]="isError('name')">
+        <input type="text" placeholder="Ваш телефон" required  id="phone" minlength="10" formControlName="phone" [class.error]="isError('phone')">
+        <button type="button" class="button" id="order-action" (click)="sendOrder()" [disabled]="!orderForm.valid">Забронировать</button>
       </form>
     </div>
   </section>

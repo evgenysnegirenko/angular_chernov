@@ -60,7 +60,7 @@
   }
   
   .main-info {
-    min-width: 755px;
+    max-width: 755px;
   }
   
   h1 {
@@ -94,8 +94,14 @@
     cursor: pointer;
   }
   
-  .button:hover {
+  .button:hover:not(:disabled) {
     background: #ffffff;
+  }
+
+  .button:disabled {
+    cursor: not-allowed;
+    color: grey;
+    background-color: #343434;
   }
   
   .button.button-white {

@@ -153,5 +153,12 @@ export class CarsComponent {
     const control = this.orderForm.get(fieldName);
     return !!(control?.invalid && (control?.dirty || control?.touched));
   }
+
+  sendOrder() {
+    if (this.orderForm.valid) {
+      alert("Спасибо за заявку! Мы скоро свяжемся с Вами");
+      this.orderForm.reset();
+    }
+  }
   
 }
